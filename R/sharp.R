@@ -1,11 +1,10 @@
 
-# General version for general statistics
-#' Title
+#' Sharp null MC sensitivity analysis for continuous exposures and binary outcomes.
 #'
 #' @param Z A length N vector of (nonnegative) observed doses.
 #' @param Q A length N vector of observed binary outcomes.
 #' @param index A length N vector of indices indicating matched set membership.
-#' @param mc An integer for the total number of Monte-Carlo samples.
+#' @param mc An integer for the total number of Monte-Carlo samples desired.
 #' @param gamma The nonnegative sensitivity parameter; gamma = 0 means no
 #' unmeasured confounding.
 #' @param trans The transformation of the doses to use for the test statistic.
@@ -20,10 +19,11 @@
 #' @examples
 dose_sensitivity_mc_gen <- function(Z, Q, index, mc, gamma,
                                     trans = identity, direct = "upper") {
+  set.seed(1)
   if(any(Z) < 0) {
     stop("Negative doses")
   }
-  if(all(Q %in% c(0,1))) {
+  if(!all(Q %in% c(0,1))) {
     stop("Non-binary outcomes")
   }
   if (gamma) {
@@ -85,8 +85,8 @@ dose_sensitivity_mc_gen <- function(Z, Q, index, mc, gamma,
 }
 
 
-# Normal approximation, general transformation
-#' Title
+#' Sharp null sensitivity analysis for continuous exposures and binary outcomes
+#' using normal approximation.
 #'
 #' @param Z A length N vector of (nonnegative) observed doses.
 #' @param Q A length N vector of observed binary outcomes.
@@ -167,8 +167,8 @@ normal_test_gen <- function(Z, Q, index, gamma, trans = identity,
 
 }
 
-# Deviation from uniform function in TV distance
-#' Title
+#' Computes deviation from uniform distrubution in TV distance for a given amount
+#' of unmeasured confounding.
 #'
 #' @param Z A length N vector of (nonnegative) observed doses.
 #' @param Q A length N vector of observed binary outcomes.
@@ -178,7 +178,8 @@ normal_test_gen <- function(Z, Q, index, gamma, trans = identity,
 #' @param direct The direction of the test - "upper" or "lower"; default is upper.
 #'
 #' @return A vector of length equaling the number of matched sets consisting
-#' of the TV distance from the uniform for gamma level of unmeasured confounding.
+#' of the TV distance from the uniform for each matched set at gamma level of
+#' unmeasured confounding.
 #' @import gtools
 #' @export
 #'

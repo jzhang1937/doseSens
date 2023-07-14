@@ -20,7 +20,8 @@ unmeasured confounding.}
 }
 \value{
 A vector of length equaling the number of matched sets consisting
-of the TV distance from the uniform for gamma level of unmeasured confounding.
+of the TV distance from the uniform for each matched set at gamma level of
+unmeasured confounding.
 }
 \description{
 Title

@@ -21,7 +21,7 @@ dose_sensitivity_mc_gen(
 
 \item{index}{A length N vector of indices indicating matched set membership.}
 
-\item{mc}{An integer for the total number of Monte-Carlo samples.}
+\item{mc}{An integer for the total number of Monte-Carlo samples desired.}
 
 \item{gamma}{The nonnegative sensitivity parameter; gamma = 0 means no
 unmeasured confounding.}

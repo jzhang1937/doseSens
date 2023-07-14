@@ -1,13 +1,15 @@
 
-#' Title
+#' Separable algorithm for threshold attributable in a case-control sensitivity
+#' analysis. For a greater than alternative, finds the 'a' matched sets that
+#' most decrease the mean and/or variance.
 #'
 #' @param Z A length N vector of (nonnegative) observed doses.
 #' @param Q A length N vector of observed binary outcomes.
 #' @param index A length N vector of indices indicating matched set membership.
 #' @param gamma The nonnegative sensitivity parameter; gamma = 0 means no
 #' unmeasured confounding.
-#' @param thresh The dose threshold for the TAE
-#' @param a The number of attributable effects to "test"
+#' @param thresh The dose threshold for the TAE.
+#' @param a The number of attributable effects to test for.
 #' @param trans The transformation of the doses to use for the test statistic.
 #' Default is the identity function.
 #'
@@ -105,7 +107,8 @@ binary_thresh_attribut <- function(Z, Q, index, gamma, thresh = 0, a = 1, trans 
   return(list(p=p_val,cand = rel))
 }
 
-#' Title
+#' Inference for general attributable effects in sensitivity analysis with
+#' binary outcomes.
 #'
 #' @param Z  A length N vector of (nonnegative) observed doses.
 #' @param Q A length N vector of observed binary outcomes.
@@ -114,7 +117,7 @@ binary_thresh_attribut <- function(Z, Q, index, gamma, thresh = 0, a = 1, trans 
 #' unmeasured confounding.
 #' @param alpha Level of the test.
 #' @param monotone A string denoting what type of monotonicity to impose on the
-#' potential outcomes; "increase", "decrease", or other.
+#' potential outcomes; "increase", "decrease", or "none".
 #' @param Delta A numeric for the attributable effect to be tested for.
 #' @param sign A string taking value "greater", "less", or "equals" to denote the
 #' constraint imposed on the attributable effect's relationship to Delta parameter.
@@ -131,7 +134,8 @@ binary_thresh_attribut <- function(Z, Q, index, gamma, thresh = 0, a = 1, trans 
 #' meaning not rejecting, "No" if wanting the solve for the least rejectable allocation
 #' of potential outcomes.
 #'
-#' @return A gurobi object.
+#' @return A gurobi optimization object. If feasible is "Yes", an optimal solution found
+#' means fail to reject. If feasible is "No", reject if the optimal value exceeds 0.
 #' @export
 #'
 #' @examples
