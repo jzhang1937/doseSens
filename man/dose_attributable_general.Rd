@@ -2,7 +2,8 @@
 % Please edit documentation in R/AE.R
 \name{dose_attributable_general}
 \alias{dose_attributable_general}
-\title{Title}
+\title{Inference for general attributable effects in sensitivity analysis with
+binary outcomes.}
 \usage{
 dose_attributable_general(
   Z,
@@ -34,7 +35,7 @@ unmeasured confounding.}
 \item{alpha}{Level of the test.}
 
 \item{monotone}{A string denoting what type of monotonicity to impose on the
-potential outcomes; "increase", "decrease", or other.}
+potential outcomes; "increase", "decrease", or "none".}
 
 \item{Delta}{A numeric for the attributable effect to be tested for.}
 
@@ -60,8 +61,10 @@ meaning not rejecting, "No" if wanting the solve for the least rejectable alloca
 of potential outcomes.}
 }
 \value{
-A gurobi object.
+A gurobi optimization object. If feasible is "Yes", an optimal solution found
+means fail to reject. If feasible is "No", reject if the optimal value exceeds 0.
 }
 \description{
-Title
+Inference for general attributable effects in sensitivity analysis with
+binary outcomes.
 }

@@ -2,7 +2,9 @@
 % Please edit documentation in R/AE.R
 \name{binary_thresh_attribut}
 \alias{binary_thresh_attribut}
-\title{Title}
+\title{Separable algorithm for threshold attributable in a case-control sensitivity
+analysis. For a greater than alternative, finds the 'a' matched sets that
+most decrease the mean and/or variance.}
 \usage{
 binary_thresh_attribut(Z, Q, index, gamma, thresh = 0, a = 1, trans = identity)
 }
@@ -16,9 +18,9 @@ binary_thresh_attribut(Z, Q, index, gamma, thresh = 0, a = 1, trans = identity)
 \item{gamma}{The nonnegative sensitivity parameter; gamma = 0 means no
 unmeasured confounding.}
 
-\item{thresh}{The dose threshold for the TAE}
+\item{thresh}{The dose threshold for the TAE.}
 
-\item{a}{The number of attributable effects to "test"}
+\item{a}{The number of attributable effects to test for.}
 
 \item{trans}{The transformation of the doses to use for the test statistic.
 Default is the identity function.}
@@ -29,5 +31,7 @@ p-value and dataframe of matched sets that have contribution to the test statist
 sorted in order of smallest mean reduction followed smallest variance reduction.
 }
 \description{
-Title
+Separable algorithm for threshold attributable in a case-control sensitivity
+analysis. For a greater than alternative, finds the 'a' matched sets that
+most decrease the mean and/or variance.
 }

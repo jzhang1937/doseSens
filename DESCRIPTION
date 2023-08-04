@@ -1,10 +1,10 @@
 Package: doseSens
-Title: What the Package Does (One Line, Title Case)
+Title: Sensitivity Analysis with Doses
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Jeffrey", "Zhang", , "jzhang17@wharton.upenn.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Performs sensitivity analysis for the sharp null and attributable effects in matched studies with continuous exposures and binary outcomes.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

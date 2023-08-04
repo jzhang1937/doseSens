@@ -2,7 +2,7 @@
 % Please edit documentation in R/sharp.R
 \name{dose_sensitivity_mc_gen}
 \alias{dose_sensitivity_mc_gen}
-\title{Title}
+\title{Sharp null MC sensitivity analysis for continuous exposures and binary outcomes.}
 \usage{
 dose_sensitivity_mc_gen(
   Z,
@@ -36,5 +36,5 @@ A length mc vector consisting of the Monte-Carlo samples of the
 test statistic.
 }
 \description{
-Title
+Sharp null MC sensitivity analysis for continuous exposures and binary outcomes.
 }

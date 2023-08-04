@@ -2,7 +2,8 @@
 % Please edit documentation in R/sharp.R
 \name{dev_TV}
 \alias{dev_TV}
-\title{Title}
+\title{Computes deviation from uniform distrubution in TV distance for a given amount
+of unmeasured confounding.}
 \usage{
 dev_TV(Z, Q, index, gamma, direct = "upper")
 }
@@ -24,5 +25,6 @@ of the TV distance from the uniform for each matched set at gamma level of
 unmeasured confounding.
 }
 \description{
-Title
+Computes deviation from uniform distrubution in TV distance for a given amount
+of unmeasured confounding.
 }

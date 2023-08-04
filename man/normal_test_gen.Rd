@@ -2,7 +2,8 @@
 % Please edit documentation in R/sharp.R
 \name{normal_test_gen}
 \alias{normal_test_gen}
-\title{Title}
+\title{Sharp null sensitivity analysis for continuous exposures and binary outcomes
+using normal approximation.}
 \usage{
 normal_test_gen(
   Z,
@@ -35,5 +36,6 @@ Default is the identity function.}
 The normal approximation deviate.
 }
 \description{
-Title
+Sharp null sensitivity analysis for continuous exposures and binary outcomes
+using normal approximation.
 }
