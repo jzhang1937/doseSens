@@ -1,17 +1,17 @@
 Package: doseSens
-Title: Sensitivity Analysis with Doses
-Version: 0.0.0.9000
+Title: Conduct Sensitivity Analysis with Continuous Exposures and Binary Outcomes
+Version: 0.1.0
 Authors@R: 
-    person("Jeffrey", "Zhang", , "jzhang17@wharton.upenn.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Performs sensitivity analysis for the sharp null and attributable effects in matched studies with continuous exposures and binary outcomes.
+    person("Jeffrey", "Zhang", email = "jzhang17@wharton.upenn.edu", role = c("aut", "cre"))
+Description: Performs sensitivity analysis for the sharp null and attributable effects in matched studies with continuous exposures and binary outcomes. Two of the functions require installation of the 'Gurobi' optimizer. Please see <https://www.gurobi.com/documentation/9.0/refman/ins_the_r_package.html> for guidance.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+LazyData: true
 Imports: dplyr, 
   gtools,
-  gurobi,
   stats, 
   utils
+Suggests: gurobi
 

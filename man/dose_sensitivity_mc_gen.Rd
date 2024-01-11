@@ -2,7 +2,8 @@
 % Please edit documentation in R/sharp.R
 \name{dose_sensitivity_mc_gen}
 \alias{dose_sensitivity_mc_gen}
-\title{Sharp null MC sensitivity analysis for continuous exposures and binary outcomes.}
+\title{Sharp null monte-carlo sensitivity analysis for continuous exposures
+and binary outcomes.}
 \usage{
 dose_sensitivity_mc_gen(
   Z,
@@ -10,8 +11,11 @@ dose_sensitivity_mc_gen(
   index,
   mc,
   gamma,
+  weights = NA,
+  obsT = NULL,
   trans = identity,
-  direct = "upper"
+  direct = "upper",
+  seed = 1
 )
 }
 \arguments{
@@ -26,15 +30,35 @@ dose_sensitivity_mc_gen(
 \item{gamma}{The nonnegative sensitivity parameter; gamma = 0 means no
 unmeasured confounding.}
 
+\item{weights}{Weights for each stratum to apply for the test statistic}
+
+\item{obsT}{The observed value of the test statistic; default is NULL}
+
 \item{trans}{The transformation of the doses to use for the test statistic.
 Default is the identity function.}
 
 \item{direct}{The direction of the test - "upper" or "lower"; default is upper.}
+
+\item{seed}{seed for random number generation.}
 }
 \value{
-A length mc vector consisting of the Monte-Carlo samples of the
-test statistic.
+A list containing two objects:
+
+\item{mc}{A length mc vector containing the monte-carlo samples of the test
+statistic.}
+\item{p}{The monte-carlo p-value.}
 }
 \description{
-Sharp null MC sensitivity analysis for continuous exposures and binary outcomes.
+Sharp null monte-carlo sensitivity analysis for continuous exposures
+and binary outcomes.
+}
+\examples{
+# Load the data
+data <- treat_out_match
+# Make a threshold at log(3.5) transformation function.
+above = function(Z) { return(Z > log(3.5)) }
+# Conduct randomization test.
+solution <- dose_sensitivity_mc_gen(data$treat, data$complain, data$match_ind,
+mc = 250, gamma = 0, trans = above)
+
 }

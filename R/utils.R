@@ -30,3 +30,38 @@ uniqueperm <- function(d) {
   out[foo] <- d
   t(out)
 }
+
+
+#' A helper that takes a gurobi model object outputted from
+#' dose_attributable_general or dose_thresh_attributable_one_sided
+#' and changes the Delta parameter. Saves computation time by directly editing
+#' the constraint involving Delta without having to reinitialize the other
+#' constraints that are kept the same. Outputs a list analogous to output from
+#' dose_attributable_general or dose_thresh_attributable_one_sided.
+#'
+#' @param model A gurobi model object outputted from dose_attributable_general.
+#' @param Delta The new Delta to test for.
+#' @param direction The new direction to test
+#' @param TT The observed test statistic.
+#'
+#' @return A gurobi model and solution.
+#'
+change_Delta <- function(model, Delta, direction = "equal", TT) {
+  requireNamespace("gurobi", quietly = TRUE)
+  new.rhs <- model$rhs
+  last <- length(model$rhs)
+  if (direction == "equal") {
+    new.rhs[last-4] <- TT - Delta
+    new.rhs[last-3] <- -TT + Delta
+  } else if (direction == "less") {
+    new.rhs[last-3] <- -TT + Delta
+  } else if (direction == "greater") {
+    new.rhs[last-3] <- TT - Delta
+  }
+  model$rhs <- new.rhs
+  solm = gurobi::gurobi(model,params = list(MIPgap = 0.01,
+                                    WorkLimit = 1000))
+
+
+  return(list(sol=solm, model = model))
+}

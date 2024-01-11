@@ -11,6 +11,7 @@ normal_test_gen(
   index,
   gamma,
   trans = identity,
+  weights = NA,
   obsT = NULL,
   direct = "upper"
 )
@@ -28,14 +29,30 @@ unmeasured confounding.}
 \item{trans}{The transformation of the doses to use for the test statistic.
 Default is the identity function.}
 
-\item{obsT}{The observed value of the test statistic; default is NULL}
+\item{weights}{Weights to apply for the test statistic}
+
+\item{obsT}{The observed value of the test statistic; default is NULL.}
 
 \item{direct}{The direction of the test - "upper" or "lower"; default is upper.}
 }
 \value{
-The normal approximation deviate.
+A list containing the following:
+
+\item{obsT}{The observed value of the test statistic}
+\item{exp}{The worst-case expectation}
+\item{var}{The worst-case variance.}
+\item{deviate}{The normal approximation deviate.}
 }
 \description{
 Sharp null sensitivity analysis for continuous exposures and binary outcomes
 using normal approximation.
+}
+\examples{
+# Load the data
+data <- treat_out_match
+# Make a threshold at log(3.5) transformation function.
+above = function(Z) { return(Z > log(3.5)) }
+# Conduct randomization test using normal approximation.
+solution <- normal_test_gen(data$treat, data$complain, data$match_ind,
+gamma = 0, trans = above)
 }

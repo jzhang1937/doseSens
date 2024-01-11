@@ -2,8 +2,9 @@
 % Please edit documentation in R/sharp.R
 \name{dev_TV}
 \alias{dev_TV}
-\title{Computes deviation from uniform distrubution in TV distance for a given amount
-of unmeasured confounding.}
+\title{Computes deviation from uniform distribution in total variation
+distance for a given amount of unmeasured confounding and a greater than
+alternative with a binary outcome.}
 \usage{
 dev_TV(Z, Q, index, gamma, direct = "upper")
 }
@@ -22,9 +23,17 @@ unmeasured confounding.}
 \value{
 A vector of length equaling the number of matched sets consisting
 of the TV distance from the uniform for each matched set at gamma level of
-unmeasured confounding.
+unmeasured confounding for the worst-case.
 }
 \description{
-Computes deviation from uniform distrubution in TV distance for a given amount
-of unmeasured confounding.
+Computes deviation from uniform distribution in total variation
+distance for a given amount of unmeasured confounding and a greater than
+alternative with a binary outcome.
+}
+\examples{
+# Load the data
+data <- treat_out_match
+# compute total variation distances.
+total_variation <- dev_TV(data$treat, data$complain,
+data$match_ind, gamma = log(1.5))
 }
